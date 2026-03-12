@@ -27,7 +27,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\src\Soenneker.Dtos.AdaptiveCard.Attachments.csproj" />
+        <ProjectReference Include="..\..\src\Soenneker.Dtos.AdaptiveCard.Attachments\Soenneker.Dtos.AdaptiveCard.Attachments.csproj" />
     </ItemGroup>
 
     <ItemGroup>
