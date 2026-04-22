@@ -1,16 +1,15 @@
-﻿using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Dtos.AdaptiveCard.Attachments.Tests;
 
-[Collection("Collection")]
-public class AdaptiveCardAttachmentsTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public class AdaptiveCardAttachmentsTests : HostedUnitTest
 {
-    public AdaptiveCardAttachmentsTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public AdaptiveCardAttachmentsTests(Host host) : base(host)
     {
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
