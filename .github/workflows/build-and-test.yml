@@ -38,7 +38,7 @@ jobs:
         run: dotnet build test/Soenneker.Dtos.AdaptiveCard.Attachments.Tests/Soenneker.Dtos.AdaptiveCard.Attachments.Tests.csproj --configuration Release --no-restore --verbosity minimal
 
       - name: Test
-        run: dotnet test test/Soenneker.Dtos.AdaptiveCard.Attachments.Tests/Soenneker.Dtos.AdaptiveCard.Attachments.Tests.csproj --configuration Release --no-build --no-restore --verbosity minimal
+        run: dotnet test --project test/Soenneker.Dtos.AdaptiveCard.Attachments.Tests/Soenneker.Dtos.AdaptiveCard.Attachments.Tests.csproj --configuration Release --no-build --no-restore --verbosity minimal
 
       - name: Pack
         run: dotnet pack src/Soenneker.Dtos.AdaptiveCard.Attachments/Soenneker.Dtos.AdaptiveCard.Attachments.csproj --configuration Release --no-build --no-restore --output . --verbosity minimal
