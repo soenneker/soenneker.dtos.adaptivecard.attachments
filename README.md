@@ -3,11 +3,24 @@
 [![](https://img.shields.io/nuget/dt/soenneker.dtos.adaptivecard.attachments.svg?style=for-the-badge)](https://www.nuget.org/packages/soenneker.dtos.adaptivecard.attachments/)
 [![](https://img.shields.io/github/actions/workflow/status/soenneker/soenneker.dtos.adaptivecard.attachments/codeql.yml?label=CodeQL&style=for-the-badge)](https://github.com/soenneker/soenneker.dtos.adaptivecard.attachments/actions/workflows/codeql.yml)
 
-# ![](https://user-images.githubusercontent.com/4441470/224455560-91ed3ee7-f510-4041-a8d2-3fc093025112.png) Soenneker.Dtos.AdaptiveCard.Attachments
-### A DTO for AdaptiveCard (de)serialization
+# Soenneker.Dtos.AdaptiveCard.Attachments
 
-## Installation
+Represents an Adaptive Card attachment in a Microsoft Teams-compatible message payload.
 
-```
+## Install
+
+```bash
 dotnet add package Soenneker.Dtos.AdaptiveCard.Attachments
 ```
+
+## What you get
+
+- `AdaptiveCardAttachments` — Represents an Adaptive Card attachment in a Microsoft Teams-compatible message payload.
+
+## API at a glance
+
+| API | What it does | Result / important behavior |
+| --- | --- | --- |
+| `AdaptiveCardAttachments.ContentType` | MIME type of the attachment. Adaptive Cards use `application/vnd.microsoft.card.adaptive`. | MIME type of the attachment. Adaptive Cards use `application/vnd.microsoft.card.adaptive`. |
+| `AdaptiveCardAttachments.ContentUrl` | URL from which the attachment content can be retrieved when it is not embedded inline. | URL from which the attachment content can be retrieved when it is not embedded inline. |
+| `AdaptiveCardAttachments.Content` | Adaptive Card document embedded directly in the attachment. | Adaptive Card document embedded directly in the attachment. |
