@@ -5,22 +5,54 @@
 
 # Soenneker.Dtos.AdaptiveCard.Attachments
 
-Represents an Adaptive Card attachment in a Microsoft Teams-compatible message payload.
+Defines the attachment envelope used to embed an Adaptive Card in a Microsoft Teams-compatible message payload.
 
-## Install
+## Installation
 
 ```bash
 dotnet add package Soenneker.Dtos.AdaptiveCard.Attachments
 ```
 
-## What you get
+## Embed a card
 
-- `AdaptiveCardAttachments` — Represents an Adaptive Card attachment in a Microsoft Teams-compatible message payload.
+```csharp
+using AdaptiveCards;
+using Soenneker.Dtos.AdaptiveCard.Attachments;
 
-## API at a glance
+var card = new AdaptiveCard(new AdaptiveSchemaVersion(1, 5));
+card.Body.Add(new AdaptiveTextBlock
+{
+    Text = "Deployment completed",
+    Weight = AdaptiveTextWeight.Bolder
+});
 
-| API | What it does | Result / important behavior |
-| --- | --- | --- |
-| `AdaptiveCardAttachments.ContentType` | MIME type of the attachment. Adaptive Cards use `application/vnd.microsoft.card.adaptive`. | MIME type of the attachment. Adaptive Cards use `application/vnd.microsoft.card.adaptive`. |
-| `AdaptiveCardAttachments.ContentUrl` | URL from which the attachment content can be retrieved when it is not embedded inline. | URL from which the attachment content can be retrieved when it is not embedded inline. |
-| `AdaptiveCardAttachments.Content` | Adaptive Card document embedded directly in the attachment. | Adaptive Card document embedded directly in the attachment. |
+var attachment = new AdaptiveCardAttachments(card);
+```
+
+The card constructor produces this envelope shape:
+
+```json
+{
+  "contentType": "application/vnd.microsoft.card.adaptive",
+  "contentUrl": null,
+  "content": {
+    "type": "AdaptiveCard",
+    "version": "1.5"
+  }
+}
+```
+
+The exact `content` object depends on the card you build. Null properties are included or omitted according to your System.Text.Json or Newtonsoft.Json serializer settings.
+
+## Refer to external content
+
+```csharp
+var attachment = new AdaptiveCardAttachments
+{
+    ContentUrl = "https://example.com/cards/deployment.json"
+};
+```
+
+The parameterless constructor still initializes `ContentType` to `application/vnd.microsoft.card.adaptive`. When using `ContentUrl`, leave `Content` null unless the receiving API explicitly supports both values.
+
+All three properties remain mutable for serializer compatibility. The DTO does not validate the card schema version, require exactly one content source, fetch external content, or send the Teams message.

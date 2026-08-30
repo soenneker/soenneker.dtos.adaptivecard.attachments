@@ -29,11 +29,18 @@ public class AdaptiveCardAttachments
     [JsonPropertyName("content")]
     public AdaptiveCards.AdaptiveCard? Content { get; set; }
 
+    /// <summary>
+    /// Creates an empty attachment with the Adaptive Card content type.
+    /// </summary>
     public AdaptiveCardAttachments()
     {
         ContentType = "application/vnd.microsoft.card.adaptive";
     }
 
+    /// <summary>
+    /// Creates an attachment containing the supplied Adaptive Card.
+    /// </summary>
+    /// <param name="card">The card to embed as inline content.</param>
     public AdaptiveCardAttachments(AdaptiveCards.AdaptiveCard card) : this()
     {
         ContentUrl = null;
