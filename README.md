@@ -42,7 +42,7 @@ The card constructor produces this envelope shape:
 }
 ```
 
-The exact `content` object depends on the card you build. Null properties are included or omitted according to your System.Text.Json or Newtonsoft.Json serializer settings.
+The exact `content` object depends on the card you build. Null properties are included or omitted according to your System.Text.Json serializer settings.
 
 ## Refer to external content
 
