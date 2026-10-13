@@ -45,6 +45,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Soenneker.AdaptiveCards.Dtos" Version="4.0.4" />
+        <PackageReference Include="Soenneker.AdaptiveCards.Dtos" Version="4.0.5" />
     </ItemGroup>
 </Project>
